@@ -11,12 +11,11 @@ The command line interface provides the following functionality:
 
 This skeleton application can help you to build up your own Arduino Framework based applications with focus on IoT. 
 
-It demonstrates the usage of the following copmonents:
+This application uses the following copmonents:
 
 * [Timer](https://github.com/dniklaus/arduino-utils-timer)
 * [Debug-Cli](https://github.com/ERNICommunity/debug-cli)
 * [Dbg-Trace](https://github.com/ERNICommunity/dbg-trace)
-* [ThingSpeak](https://github.com/mathworks/thingspeak-particle)
 
 ## How to build for Eclipse CDT
   1. Create a directory where your Eclipse Workspace will be stored and where this project shall be cloned into. E.g. `C:\git\pio-prj`
