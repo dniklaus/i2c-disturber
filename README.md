@@ -1,19 +1,13 @@
-# wiring-iot-skeleton
-Wiring / Arduino based IoT Skeleton Embedded Application, powered by [PlatformIO](http://platformio.org "Cross-platform build system")
+# i2c-disturber
+Wiring / Arduino based Embedded Application, powered by [PlatformIO](http://platformio.org "Cross-platform build system")
 
-The project has initially been created for and tested on an [Adafruit ESP8266 Huzzah](https://www.adafruit.com/product/2471 "Adafruit HUZZAH ESP8266 Breakout") controller module. Now it has been migrated to [NodeMCU](http://nodemcu.com/index_en.html "NodeMCU Connect Things EASY") (also ESP8266 based).
+The project is initially created for Arduino DUE (Atmel SAM / ARM).
 
 ## Purpose
-This project builds up an Arduino Framework based IoT application skeleton and it comprises of several components helping with debugging and integrating embedded applications on [Arduino](http://arduino.cc) and [ESP8266 ESP-12](https://en.wikipedia.org/wiki/ESP8266) based contoller modules.
+This project builds up an Arduino Framework based I2C bus bit error injectior application and it comprises of several components helping with debugging and integrating the embedded applications on [Arduino](http://arduino.cc).
 
 The command line interface provides the following functionality:  
 
-* configure the WiFi access point (SSID & Password) and show the WiFi connection status
-* [ThingSpeak](http://thingspeak.com) features:
-  * setup a  channel to be written to later on (ChID & API Key)
-  * set ThingSpeak channel data fields (1..8) and write the data to the channel
-
-(Planned: MQTT features)
 
 This skeleton application can help you to build up your own Arduino Framework based applications with focus on IoT. 
 
@@ -33,10 +27,13 @@ It demonstrates the usage of the following copmonents:
 
 ## Open project in Eclipse CDT
   6. Open Eclipse CDT, choose the folder you created before as workspace, i.e `C:\git\pio-prj`
-  7. Import the project with File->Import->General->Existing Projects into Workspace, choose the `wiring-iot-skeleton` (i.e `C:\git\pio-prj\wiring-iot-skeleton`)
+  7. Import the project with File->Import->General->Existing Projects into Workspace, choose the `i2c-disturber` (i.e `C:\git\pio-prj\i2c-disturber`)
+  8. Connect PC to the Arduino DUE programming port using a micro USB cable.
+  9. Edit the file platformio.ini, alter the line `upload_port = COM4` if your Arduino DUE is connected to another COM port
+ 10. Run the command `pio run -t upload` in order to upload the sketch
 
 ## Connect Terminal Emulation
-In order to test and run the CLI commands, a terminal emulation program shall be used. The one giving you the best experience will be the [HTerm](http://www.der-hammer.info/terminal/). 
+In order to run the CLI commands, a terminal emulation program shall be used. The one giving you the best experience will be the [HTerm](http://www.der-hammer.info/terminal/). 
 Load the _hterm-com18.cfg_ file to configure HTerm properly. Alter the COM18 accordingly to the one that has been selected on your computer.
 
 ## Debug Features
@@ -53,26 +50,19 @@ Load the _hterm-com18.cfg_ file to configure HTerm properly. Alter the COM18 acc
              get              Show the current trace level
              set <level>      Set a particular trace level
              list             Show all available trace levels (and the currenntly selected)
-       wifi                   WiFi debug commands
-         mac                  show WiFi MAC address
-         nets
-         stat                 Show WiFi status
-         dis                  Disconnect WiFi
-         con <SSID> <Pass>    Connect WiFi
-       mqtt
-         con
-         dis
-       thgspk                 ThingSpeak debug commands
-         chid <channelId>     Set ThingSpeak Channel ID.
-         key <APIKey>         Set ThingSpeak API key.
-         set <value> [field]  Set ThingSpeak field value (field: 1..8, default: 1)
-         wr                   ThingSpeak write fields.
+       dbg 
+         i2c 
+           start
+           stop
+           seq
+              run
+              quit
+              stat
+           
 
 #### Example commands
 * `dbg tr heap lvl set debug`
-* `dbg thgspk set 23.6 1`
-* `dbg thgspk set 25.3 2`
-* `dbg thgspk wr`
+* `dbg i2c run`
 
 
 ### Trace Port
