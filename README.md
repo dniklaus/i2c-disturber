@@ -19,27 +19,28 @@ This application uses the following copmonents:
 * [Debug-Cli](https://github.com/ERNICommunity/debug-cli)
 * [Dbg-Trace](https://github.com/ERNICommunity/dbg-trace)
 
-## How to build for Eclipse CDT
+## Build and Integration
+### How to build for Eclipse CDT
   1. Create a directory where your Eclipse Workspace will be stored and where this project shall be cloned into. E.g. `C:\git\pio-prj`
   2. Clone this repository recursively into the folder you created before, `git clone --recursive git@github.com:dniklaus/wiring-iot-skeleton.git`
   3. Open a command shell in the just cloned project folder, i.e in `C:\git\pio-prj\wiring-iot-skeleton`
   4. Run the command `pio init -b nodemcuv2 --ide eclipse`
   5. Run the command `pio run`
 
-## Open project in Eclipse CDT
+### Open project in Eclipse CDT
   6. Open Eclipse CDT, choose the folder you created before as workspace, i.e `C:\git\pio-prj`
   7. Import the project with File->Import->General->Existing Projects into Workspace, choose the `i2c-disturber` (i.e `C:\git\pio-prj\i2c-disturber`)
   8. Connect PC to the Arduino DUE programming port using a micro USB cable.
   9. Edit the file platformio.ini, alter the line `upload_port = COM4` if your Arduino DUE is connected to another COM port
  10. Run the command `pio run -t upload` in order to upload the sketch
 
-## Connect Terminal Emulation
+### Connect Terminal Emulation
 In order to run the CLI commands, a terminal emulation program shall be used. The one giving you the best experience will be the [HTerm](http://www.der-hammer.info/terminal/). 
 Load the _hterm-com18.cfg_ file to configure HTerm properly. Alter the COM18 accordingly to the one that has been selected on your computer.
 
-## Debug Features
-### Debug CLI Commands
-#### Command Tree
+### Debug Features
+#### Debug CLI Commands
+##### Command Tree
      dbg                      Debug CLI root node
        tr                     Debug Trace Port config access
          heap                 Particular Trace Port (heap: see below in chapter Trace Port)
@@ -60,26 +61,26 @@ Load the _hterm-com18.cfg_ file to configure HTerm properly. Alter the COM18 acc
            stat               Show random sequence of START and STOP conditions sent to I2C bus run status
            
 
-#### Example commands
+##### Example commands
 * `dbg tr heap lvl set debug`
 * `dbg i2c run`
 
 
-### Trace Port
+#### Trace Port
 |Trace Port|default level|functionality|
 |----------|-------------|:------------|
 |heap|info|if set to debug level: automatically print free heap memory [bytes], every 10 seconds|
 
-## Library Usage
+### Library Usage
 This chapter lists all the libraries this project is using.
 
-### PlatformIO Libraries
+#### PlatformIO Libraries
 |ID|Name|URL|Description|
 |:--|:-------|:----------------|:-----------------------|
 |173|SerialCommand|https://github.com/kroimon/Arduino-SerialCommand |A Wiring/Arduino library to tokenize and parse commands received over a serial port.|
 
 
-### Homebrew Libraries
+#### Homebrew Libraries
 |Name|URL|Description|
 |:------|:---------------------|:-------------------------------|
 |Timer|https://github.com/dniklaus/arduino-utils-timer |Universal recurring or non-recurring Timer|
