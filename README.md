@@ -8,6 +8,8 @@ This project builds up an Arduino Framework based I2C bus bit error injectior ap
 
 The command line interface provides the following functionality:  
 
+* send single START and STOP conditions to the I2C bus
+* run a random sequence of START and STOP conditions with random intervals between them
 
 This skeleton application can help you to build up your own Arduino Framework based applications with focus on IoT. 
 
@@ -49,14 +51,13 @@ Load the _hterm-com18.cfg_ file to configure HTerm properly. Alter the COM18 acc
              get              Show the current trace level
              set <level>      Set a particular trace level
              list             Show all available trace levels (and the currenntly selected)
-       dbg 
-         i2c 
-           start
-           stop
-           seq
-              run
-              quit
-              stat
+       i2c                    I2C debug commands 
+         start                Send START condition to I2C bus
+         stop                 Send STOP condition to I2C bus
+         seq                  I2C START / STOP sequences commands
+           run                Run random sequence of START and STOP conditions sent to I2C bus
+           quit               Quit running random sequence of START and STOP conditions sent to I2C bus
+           stat               Show random sequence of START and STOP conditions sent to I2C bus run status
            
 
 #### Example commands
