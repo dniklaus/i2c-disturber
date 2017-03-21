@@ -76,15 +76,14 @@ This chapter lists all the libraries this project is using.
 ### PlatformIO Libraries
 |ID|Name|URL|Description|
 |:--|:-------|:----------------|:-----------------------|
-|173|SerialCommand|https://github.com/kroimon/Arduino-SerialCommand|A Wiring/Arduino library to tokenize and parse commands received over a serial port.|
-|550|ThingSpeak|https://github.com/mathworks/thingspeak-particle|"MathWorks": ThingSpeak Communication Library for Arduino & ESP8266|
+|173|SerialCommand|https://github.com/kroimon/Arduino-SerialCommand |A Wiring/Arduino library to tokenize and parse commands received over a serial port.|
 
 
 ### Homebrew Libraries
 |Name|URL|Description|
 |:------|:---------------------|:-------------------------------|
-|Timer|https://github.com/dniklaus/arduino-utils-timer|Universal recurring or non-recurring Timer|
-|Debug-Cli|https://github.com/ERNICommunity/debug-cli|Debug CLI for Embedded Applications - Command Line  Interface for debugging and testing based on object oriented tree structure.|
-|Dbg-Trace|https://github.com/ERNICommunity/dbg-trace|Debug Trace component for Embedded Applications - Debug and Trace Log message system based on trace ports with adjustable levels.|
-|RamUtils|https://github.com/dniklaus/arduino-utils-mem|Arduino Memory Utilities|
+|Timer|https://github.com/dniklaus/arduino-utils-timer |Universal recurring or non-recurring Timer|
+|Debug-Cli|https://github.com/ERNICommunity/debug-cli |Debug CLI for Embedded Applications - Command Line  Interface for debugging and testing based on object oriented tree structure.|
+|Dbg-Trace|https://github.com/ERNICommunity/dbg-trace |Debug Trace component for Embedded Applications - Debug and Trace Log message system based on trace ports with adjustable levels.|
+|RamUtils|https://github.com/dniklaus/arduino-utils-mem |Arduino Memory Utilities|
 
