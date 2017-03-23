@@ -69,6 +69,16 @@ void i2cStop()
   pinMode(pinSDA, INPUT_PULLUP);
 }
 
+bool getScl()
+{
+  return digitalRead(pinSCL);
+}
+
+bool getSda()
+{
+  return digitalRead(pinSDA);
+}
+
 //-----------------------------------------------------------------------------
 
 void runRandomSequence();
@@ -105,6 +115,95 @@ void runRandomSequence()
 
   doRandomStartOrStop();
 }
+
+//-----------------------------------------------------------------------------
+
+class DbgCli_Cmd_I2cStat : public DbgCli_Command
+{
+public:
+  DbgCli_Cmd_I2cStat(DbgCli_Topic* i2cTopic)
+  : DbgCli_Command(i2cTopic, "stat", "Get SCL & SDA status (I2C bus).")
+  { }
+
+  void execute(unsigned int argc, const char** args, unsigned int idxToFirstArgToHandle)
+  {
+    if (argc - idxToFirstArgToHandle > 0)
+    {
+      printUsage();
+    }
+    else
+    {
+      Serial.print("I2C status - SCL: ");
+      Serial.print(getScl() ? "HIGH" : "LOW ");
+      Serial.print(" - SDA: ");
+      Serial.println(getSda() ? "HIGH" : "LOW ");
+    }
+  }
+
+  void printUsage()
+  {
+    Serial.println(getHelpText());
+    Serial.println("Usage: dbg i2c stat");
+  }
+};
+
+//-----------------------------------------------------------------------------
+
+class DbgCli_Cmd_I2cScl : public DbgCli_Command
+{
+public:
+  DbgCli_Cmd_I2cScl(DbgCli_Topic* i2cTopic)
+  : DbgCli_Command(i2cTopic, "scl", "Get SCL status (I2C bus).")
+  { }
+
+  void execute(unsigned int argc, const char** args, unsigned int idxToFirstArgToHandle)
+  {
+    if (argc - idxToFirstArgToHandle > 0)
+    {
+      printUsage();
+    }
+    else
+    {
+      Serial.print("SCL status: ");
+      Serial.println(getScl() ? "HIGH" : "LOW");
+    }
+  }
+
+  void printUsage()
+  {
+    Serial.println(getHelpText());
+    Serial.println("Usage: dbg i2c scl");
+  }
+};
+
+//-----------------------------------------------------------------------------
+
+class DbgCli_Cmd_I2cSda : public DbgCli_Command
+{
+public:
+  DbgCli_Cmd_I2cSda(DbgCli_Topic* i2cTopic)
+  : DbgCli_Command(i2cTopic, "sda", "Get SDA status (I2C bus).")
+  { }
+
+  void execute(unsigned int argc, const char** args, unsigned int idxToFirstArgToHandle)
+  {
+    if (argc - idxToFirstArgToHandle > 0)
+    {
+      printUsage();
+    }
+    else
+    {
+      Serial.print("SDA status: ");
+      Serial.println(getSda() ? "HIGH" : "LOW");
+    }
+  }
+
+  void printUsage()
+  {
+    Serial.println(getHelpText());
+    Serial.println("Usage: dbg i2c sda");
+  }
+};
 
 //-----------------------------------------------------------------------------
 
@@ -266,6 +365,9 @@ void setup()
   pinMode(pinSDA, INPUT_PULLUP);
 
   DbgCli_Topic* i2cTopic = new DbgCli_Topic(DbgCli_Node::RootNode(), "i2c", "I2C debug commands");
+  new DbgCli_Cmd_I2cStat(i2cTopic);
+  new DbgCli_Cmd_I2cScl(i2cTopic);
+  new DbgCli_Cmd_I2cSda(i2cTopic);
   new DbgCli_Cmd_I2cStart(i2cTopic);
   new DbgCli_Cmd_I2cStop(i2cTopic);
   DbgCli_Topic* i2cSeqTopic = new DbgCli_Topic(i2cTopic, "seq", "I2C START / STOP sequences commands");
