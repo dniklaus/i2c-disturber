@@ -43,14 +43,8 @@ void i2cStart()
   digitalWrite(pinSCL, HIGH);
   pinMode(pinSCL, INPUT_PULLUP);
 
-  pinMode(pinSCL, OUTPUT);
-  digitalWrite(pinSCL, LOW);
-
   digitalWrite(pinSDA, HIGH);
   pinMode(pinSDA, INPUT_PULLUP);
-
-  digitalWrite(pinSCL, HIGH);
-  pinMode(pinSCL, INPUT_PULLUP);
 }
 
 void i2cStop()

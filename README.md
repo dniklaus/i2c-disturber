@@ -53,6 +53,9 @@ Load the _hterm-com18.cfg_ file to configure HTerm properly. Alter the COM18 acc
              set <level>      Set a particular trace level
              list             Show all available trace levels (and the currenntly selected)
        i2c                    I2C debug commands 
+         stat                 Get SCL & SDA status
+         scl                  Get SCL status
+         sda                  Get SDA status
          start                Send START condition to I2C bus
          stop                 Send STOP condition to I2C bus
          seq                  I2C START / STOP sequences commands
